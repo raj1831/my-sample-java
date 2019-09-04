@@ -6,7 +6,8 @@ node {
 
 	stage('Compile package')
 	{
-	sh label: '', script: 'mvn package'
+	sh label: 'Build', script: 'mvn package'
+	sh lavel: 'Coping Artifacts', /bin/cp target/*.war ../docker/
 	}
 
 }
