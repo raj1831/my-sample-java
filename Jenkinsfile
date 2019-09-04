@@ -10,8 +10,8 @@ node
 	sh label: 'Build', script: 'mvn package'
 	}
 
-	stage('Compile package')
+	stage('Copying Artifacts')
 	{
-	sh label: 'Build', script: 'mvn package'
+	sh label: 'Copy', script: 'cp target/*.war Docker'
 	}
 }
