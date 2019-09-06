@@ -8,4 +8,8 @@ node
 	{
 	sh label: 'Build package', script: 'mvn clean package'
 	}
+	stage('Build Image in docker')
+	{
+	sh label: 'Build Image', script: 'docker bulild -t raj1831/my-sample-java:1.0.0'
+	}
 }
