@@ -18,4 +18,7 @@ node
 		}
 	sh label: 'Push Image', script: 'docker push raj1831/my-sample-java:1.0.0'
 	}
+	stage('Publish'){
+	sh label: 'Run the Image' script: 'docker run -d --name my-sample-java -p 8080:8080 raj1831/my-sample-java:1.0.0'
+	}
 }
