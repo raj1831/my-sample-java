@@ -19,6 +19,14 @@ node
 	sh label: 'Push Image', script: 'docker push raj1831/my-sample-java:1.0.0'
 	}
 	stage('Publish'){
-	sh label: 'Run container', script: 'docker rm -f my-sample-java && docker run -d --name my-sample-java -p 8081:8080 raj1831/my-sample-java:1.0.0'
+	def status = sh label:'', script: 'docker ps -a | grep my-sample-java'
+	if ( "${status}" -eq "" ){
+	   	sh label:'', script: 'docker run -d --name my-sample-java -p 8081:8080 raj1831/my-sample-java:1.0.0'
+	   }
+   	else{
+   		sh label:'', script: 'docker ps -a | grep my-sample-java && docker run -d --name my-sample-java -p 8081:8080 raj1831/my-sample-java:1.0.0'
+   		}
+   	}
+	fi
 	}
 }
