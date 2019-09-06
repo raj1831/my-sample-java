@@ -10,6 +10,6 @@ node
 	}
 	stage('Build Image in docker')
 	{
-	sh label: 'Build Image', script: 'docker build -t raj1831/my-sample-java:1.0.0'
+	sh label: 'Build Image', script: 'docker build -t raj1831/my-sample-java:1.0.0 .'
 	}
 }
