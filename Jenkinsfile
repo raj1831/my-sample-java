@@ -2,16 +2,10 @@ node
 {
 	stage('SCM Checkout')
 	{
-	git 'https://github.com/raj1831/my-sample-java'
+	git credentialsId: 'ccca2dd6-0b71-4dc4-8296-fac98a9c195e', url: 'https://github.com/raj1831/my-sample-java'
 	}
-
 	stage('Compile package')
 	{
-	sh label: 'Build', script: 'mvn package'
-	}
-
-	stage('Copying Artifacts')
-	{
-	sh label: 'Copy', script: 'cp target/*.war Docker'
+	sh label: 'Build package', script: 'mvn clean package'
 	}
 }
