@@ -12,4 +12,10 @@ node
 	{
 	sh label: 'Build Image', script: 'docker build -t raj1831/my-sample-java:1.0.0 .'
 	}
+	stage('Push Image'){
+		withCredentials([string(credentialsId: 'Docker-Pass', variable: 'DockerHubPass')]){
+		sh label:'Docker login', script: "docker login -u raj1831 -p ${DockerHubPass}"
+		}
+	sh label: 'Push Image', script: 'docker push raj1831/my-sample-java:1.0.0'
+	}
 }
